@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Functional Components</title>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+<div id="root"> This should change</div>
+
+
+<script type='text/babel'>
+
+
+let rootNode = ReactDOM.createRoot(document.getElementById('root'));
+
+
+// Props - string
+// let FunComp = (props) => { // let props = {name:"janeDoe"}
+//     return ( // JSX code below
+//         <div>
+//             <h1> Hello {props.name} ! !</h1>
+//             <h2> Hello </h2>
+//         </div>        
+//     )
+// }
+// rootNode.render(<FunComp name="Jane Doe"/>);
+
+
+
+
+// Props - string - default
+// let FunComp = ({name="John Doe"}) => { // let props = {name:"janeDoe"}
+//     return ( // JSX code below
+//         <div>
+//             <h1> Hello {name} ! !</h1>
+//             <h2> Hello </h2>
+//         </div>        
+//     )
+// }
+// rootNode.render(<FunComp/>);
+
+
+// Props - number
+// let FunComp = (props) => {
+//     return ( // JSX code below
+//         <div>
+//             <h1> Hello {props.name} ! !</h1>
+//             <h3> You have {100-props.age} to be 100 years old! </h3>
+//         </div>        
+//     )
+// }
+// rootNode.render(<FunComp name="Jane" age={46}/>); // how to send number as prop
+
+
+// // Props - boolean
+// let FunComp = (props) => {
+//     // cannot use if inside return , can use only ternary
+//     return ( // JSX code below
+//         <div>
+//             <h1> Hello {props.name} !!</h1>
+//             <h3> You have {100-props.age} to be 100 years old!
+//             I { props.vegetarian ? "do not" : ''   }   eat meat</h3>      
+//             { /*  Note: cannot use if , can use ternary */  }
+//         </div>        
+//     )
+// }
+// rootNode.render(<FunComp name="Jane" age={46} vegetarian={true} />); // how to send number as prop
+
+
+
+
+// Props - boolean
+let FunComp = (props) => {
+    // cannot use if inside return , can use only ternary
+    return ( // JSX code below
+        <div>
+            <h1> Hello {props.name} !!</h1>
+            <h3> You have {100-props.age} to be 100 years old!  </h3>
+            <h3> I { props.vegetarian ? "do not" : ''   }   eat meat.</h3>    
+             <h3>I speak - {props.langs.toString()}  </h3>
+             <h3>I speak - {props.langs.join()}   </h3>
+             <h3>I speak - {props.langs.toString().split(',')}   </h3>
+            { /*  Note: cannot use if , can use ternary */  }  
+            <h3>I speak -
+                {
+                  props.langs.map((elem,i) => { return <li key={i}> {elem} </li> })
+                }              
+            </h3>
+          <h3>   My food choices - soup : {props.favFood.soup}</h3>
+          <h3>   My food choices - rice : {props.favFood.rice}</h3>
+          <h3>   My food choices - dessert : {props.favFood.dessert}</h3>  
+          <button onClick={props.myFun}> Click and check console</button>
+        </div>        
+    )
+}
+
+
+let clickHandler = () => {
+    console.log('clicked');
+}
+
+
+rootNode.render(<FunComp name="Jane" age={46} vegetarian={false}
+langs={ ['English','Spanish','German','Telugu'] }
+favFood = {{"soup":'hot and sour',"rice":"fried-rice" ,"dessert":"cheese cake" }}
+myFun = {clickHandler}
+/>); // how to send number as prop
+
+
+</script>
+
+
+
+
+</body>
+</html>
