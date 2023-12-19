@@ -34,12 +34,12 @@
 
         regDiv.innerHTML = "<div><input/> <p>" + (new Date()) + "</p></div>";
 
-//let DateComp = React.createElement("div",null, React.createElement("input,{},''"),
+//let DateComp = React.createElement("div",null, React.createElement("input,{},""),
 //React.createElement("p",{},(new Date()).toString()));
 let DateComp = React.createElement("div",null, React.createElement("input"),
         React.createElement("p",{},(new Date()).toString()));
 
-root.render(DateComp);
+        root.render(DateComp);
      }
 
 setInterval(renderTime,1000);  
